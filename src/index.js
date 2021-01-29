@@ -16,7 +16,7 @@ const levels = []
 server.on('upgrade', (request, socket, head) => {
 	const { pathname } = url.parse(request.url)
 
-	const match = pathname?.match(/\/level\/(.*)\.ws/)
+	const match = pathname && pathname.match(/\/level\/(.*)\.ws/)
 	const levelId = match ? match[1] : null
 
 	if (levelId) {
