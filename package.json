@@ -1,0 +1,27 @@
+{
+	"name": "math-maze-positions",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"start": "node src/index.js",
+		"dev": "nodemon src/index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.17.1",
+		"nodemon": "^2.0.7",
+		"prettier": "^2.2.1",
+		"ws": "^7.4.2"
+	},
+	"prettier": {
+		"semi": false,
+		"singleQuote": true,
+		"trailingComma": "es5",
+		"useTabs": true,
+		"arrowParens": "always"
+	}
+}
