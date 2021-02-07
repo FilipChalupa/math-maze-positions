@@ -24,28 +24,33 @@ export class Level {
 		this.clients[id] = socket
 
 		socket.on('message', (message) => {
-			console.log('new message',message.toString())
+			console.log('new message', message.toString())
 			const data = JSON.parse(message.toString())
 			if ('position' in data) {
 				for (const [otherId, otherSocket] of Object.entries(this.clients)) {
 					if (id !== otherId) {
-						otherSocket.send(JSON.stringify({
-							id,
-							position: data.position,
-						}))
+						otherSocket.send(
+							JSON.stringify({
+								id,
+								position: data.position,
+								characterIndex: data.characterIndex,
+							})
+						)
 					}
 				}
 			}
 			this.socketServer
 		})
 
-		socket.on('close', () => {+
+		socket.on('close', () => {
 			delete this.clients[id]
 			for (const [otherId, otherSocket] of Object.entries(this.clients)) {
-				otherSocket.send(JSON.stringify({
-					id,
-					left: true,
-				}))
+				otherSocket.send(
+					JSON.stringify({
+						id,
+						left: true,
+					})
+				)
 			}
 		})
 	}
