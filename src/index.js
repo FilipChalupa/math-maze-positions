@@ -13,6 +13,10 @@ const server = http.createServer(app)
 
 const levels = []
 
+app.get('/', (request, response) => {
+	response.redirect('https://matematicke-bludiste.vercel.app')
+})
+
 server.on('upgrade', (request, socket, head) => {
 	const { pathname } = url.parse(request.url)
 
